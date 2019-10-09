@@ -24,7 +24,7 @@
 * Para executar o programa na linguagem Lisp, no qual o algoritmo foi realizado, necessita apenas do software XLISP, podendo ser instalado no computador ou apenas realizando o download do executável e desenvolvendo o projeto com ele, como já descrito, não precisando de nenhuma outra ferramenta adicional ou especial, esse programa pode ser obtido no link acima.
 
 ### Desenvolvimento
-* Git clone https://github.com/murilodepa/Jogo-do-Quebra-Cabeca-do-9
+* Git clone https://github.com/murilodepa/Processo-de-Matriculas-em-Uma-Faculdade-Em-Lisp
 * Se realizar "Download ZIP", necessita de um descompactador de arquivos.
 * Após ter instalado o XLISP, copiei todo o texto salvo no arquivo "Projeto de Lisp.txt" e cole no software XLISP, precionando as teclas *shift+fn+Del* ou *shift+insert*.
 * Logo em seguida, pressione a tecla enter e o programa começará a ser executado.
