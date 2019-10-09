@@ -26,7 +26,7 @@
 ### Desenvolvimento
 * Git clone https://github.com/murilodepa/Processo-de-Matriculas-em-Uma-Faculdade-Em-Lisp
 * Se realizar "Download ZIP", necessita de um descompactador de arquivos.
-* Após ter instalado o XLISP, copiei todo o texto salvo no arquivo "Projeto de Lisp.txt" e cole no software XLISP, precionando as teclas *shift+fn+Del* ou *shift+insert*.
+* Após ter instalado o XLISP, deve ser copiado todo o texto salvo no arquivo "Projeto de Lisp.txt" e cole no software XLISP, precionando as teclas *shift+fn+Del* ou *shift+insert*.
 * Logo em seguida, pressione a tecla enter e o programa começará a ser executado.
 
 ### Contribuições
