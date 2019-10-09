@@ -29,5 +29,9 @@
 * Após ter instalado o XLISP, deve ser copiado todo o texto salvo no arquivo "Projeto de Lisp.txt" e cole no software XLISP, precionando as teclas *shift+fn+Del* ou *shift+insert*.
 * Logo em seguida, pressione a tecla enter e o programa começará a ser executado.
 
+### Desenvolvedores
+* Murilo de Paula Araujo.
+* Christoper de Oliveira Souza.
+
 ### Contribuições
 - Contribuições e possíveis melhorias no meu ponto de vista são sempre bem-vindas.
