@@ -1,0 +1,414 @@
+(DEFUN DISCIPLINAS? (BD)
+(if (null bd)
+nil
+(cons (cdr(car bd)) (disciplinas? (cdr bd)))
+)
+)
+
+
+
+(DEFUN MATRICULADOS? (DISCIPLINA TURMA BD)
+(if(null bd)
+nil
+(if(eq disciplina (cdr(car bd)))
+(if(eq turma 1)
+(cons (car(cdr(car(car(car bd)))))  
+(cdr(cdr(car(car(car bd))))) )
+(cons  (car(cdr(car(cdr(car(car bd)))))) 
+(cdr(cdr(car(cdr(car(car bd)))))))
+)
+(MATRICULADOS? DISCIPLINA TURMA (cdr bd))
+)
+)
+)
+
+
+(DEFUN VINCULADOS? (DISCIPLINA BD)
+(if (null BD)
+nil
+(if(eql(cdr(car BD))Disciplina)
+(car(cdr(cdr(car(car BD)))))
+(VINCULADOS? DISCIPLINA (cdr BD))
+)
+)
+)
+
+
+
+(DEFUN PROFESSORES? (BD)
+(if (null bd)
+nil
+(tosar(car(cdr(cdr(car(car bd))))) 
+(professores?(cdr bd)))
+)
+)
+
+
+(defun tosar (x y)
+(if(null x)
+y
+(if(buscaTosa(car x) y)
+(cons (car x) (tosar (cdr x) y))
+(tosar (cdr x) y)
+)
+)
+)
+
+(defun buscaTosa (x y)
+(if(null y)
+t
+(if(eq x (car y))
+nil
+(buscaTosa x (cdr y))
+)
+)
+)
+
+
+
+
+(DEFUN MINISTRA? (PROFESSOR BD)
+(if (null BD)
+nil
+(if (consul_prof PROFESSOR (car(cdr(cdr(car(car BD))))))
+(cons (cdr(car BD)) (MINISTRA? PROFESSOR (CDR BD)))
+(MINISTRA? PROFESSOR (CDR BD))
+)
+)
+)
+
+(DEFUN CURSA? (ALUNO BD)
+(if (null bd)
+nil
+(if (or(aluno-existe aluno(cdr(Car(car(car bd)))))
+(aluno-existe aluno (cdr(car(cdr(car(car bd)))))))
+(cons (cdr(car bd)) (CURSA? ALUNO (CDR bd)))
+(cursa? aluno (cdr bd))
+)
+)
+)
+
+
+(defun aluno-existe(aluno bd)
+(if (null bd)
+nil
+(if (eq aluno (car bd))
+T
+(aluno-existe aluno (cdr bd))
+)
+)
+)
+
+
+(defun consul_prof (PROFESSOR BD)
+(if (null BD)
+nil
+(if (eql (car BD) PROFESSOR)
+T
+(consul_prof PROFESSOR (cdr BD))
+)
+) 
+)
+
+(defun DisciVazia? (professores bd)
+(if(and(and(eq (remover_p professores (car(cdr(cdr(car(car bd))))))nil)
+(eq (cdr(car(car(car bd)))) nil))
+(eq (cdr(car(cdr(car(car bd)))))nil))
+T
+nil)
+)
+
+
+
+
+(defun alterar_bancoP(professores bd)
+(if (disciVazia? professores bd)
+nil
+(cons (cons (cons (car(car(car bd))) (cons (car(cdr(car(car bd))))
+(cons (remover_p professores 
+(car(cdr(cdr(car(car bd)))))) 'nil))) (cdr(car bd))) 'nil)
+)
+)
+
+
+
+(defun verificar_disciplina (disciplinas bd)
+(if (null disciplinas)
+nil
+(if(eq (car disciplinas) bd)
+t
+(verificar_disciplina (cdr disciplinas) bd)
+)
+)
+)
+
+(defun verificar_prof(professores bd)
+(if (null professores)
+t
+(if(eq(car professores) bd)
+nil
+(verificar_prof(cdr professores) bd)
+)
+)
+)
+
+(defun remover_P (professores bd)
+(if (null bd)
+nil
+(if (verificar_prof professores (car bd))
+(cons (car bd)(remover_P professores (cdr bd)))
+(remover_P professores(cdr bd))
+)
+)
+)
+
+
+
+(DEFUN REMOVER-VINCULO (PROFESSORES DISCIPLINAS BD)
+(if (null bd)
+nil
+(if(Verificar_disciplina disciplinas (cdr(car bd)))
+(append(alterar_bancoP professores bd)
+(remover-vinculo professores disciplinas (cdr bd)))
+(append(cons(car bd)'nil)
+(remover-vinculo professores disciplinas (cdr bd)))
+)
+)
+)
+
+(defun vincular(professores disciplinas bd)
+(append(novos_prof disciplinas professores bd)
+(disciplinas_novas_prof professores disciplinas bd))
+)
+
+(defun novos_prof (disciplinas professores bd)
+(if (null bd)
+nil
+(if(verificar_disciplina disciplinas (cdr(car bd)))
+(append (alterar_bancoP+ professores bd)
+(novos_prof disciplinas professores (cdr bd)))
+(append(cons(car bd)'nil)
+(novos_prof disciplinas professores (cdr bd)))
+)
+)
+)
+
+(defun disciplinas_novas_prof (professores disciplinas bd)
+(if (null disciplinas)
+nil
+(if(verificar_disciplina_bd(car disciplinas) bd)
+(append(nova_disciplinaProf professores (car disciplinas))
+(disciplinas_novas_prof professores (cdr disciplinas) bd))
+(disciplinas_novas_prof professores (cdr disciplinas) bd))
+)
+)
+
+(defun nova_disciplinaProf(professores disciplina)
+(cons (cons (cons (cons 't1 nil) (cons (cons 't2 'nil)
+(cons professores 'nil))) disciplina) 'nil)
+)
+
+(defun alterar_bancoP+ (professores bd)
+(cons (cons (cons (car(car(car bd))) (cons (car(cdr(car(car bd))))
+(cons (append(car(cdr(cdr(car(car bd)))))
+(adicionar_p professores 
+(car(cdr(cdr(car(car bd))))))) 'nil))) 
+(cdr(car bd))) 'nil)
+)
+
+(defun adicionar_p (professores bd)
+(if (null professores)
+nil
+(if (verificar_prof bd (car professores))
+(cons (car professores) (adicionar_p (cdr professores) bd))
+(adicionar_p (cdr professores) bd))
+)
+)
+
+
+(DEFUN MATRICULAR (ALUNOS DISCIPLINAS TURMA BD)
+(append (DISCIPLINAS_BD alunos disciplinas turma bd) 
+(disciplinas_novas alunos disciplinas turma bd))
+)
+
+(defun disciplinas_novas (alunos disciplinas turma bd)
+(if(null disciplinas)
+nil
+(if (verificar_disciplina_bd (car disciplinas) bd)
+(append(nova_disciplina alunos (car disciplinas) turma)
+(disciplinas_novas alunos (cdr disciplinas) turma bd))
+(disciplinas_novas alunos (cdr disciplinas) turma bd)
+)
+)
+)
+
+(defun verificar_disciplina_bd (disciplinas bd)
+(if (null bd)
+T
+(if (eq disciplinas (cdr(car bd)))
+nil
+(verificar_disciplina_bd disciplinas (cdr bd))
+)
+)
+)
+
+
+(defun disciplinas_bd (alunos disciplinas turma bd)
+(if (null bd)
+nil
+(if (verificar_disciplina disciplinas (cdr(car bd)))
+(append (novas_alunos alunos turma bd) 
+(disciplinas_bd alunos disciplinas turma (cdr bd)))
+(append(cons(car bd)'nil)
+(disciplinas_bd alunos disciplinas turma (cdr bd)))
+)
+)
+)
+
+(defun novas_alunos (alunos turma bd)
+(if (eq turma '1)
+(cons(cons(cons (append(car(car(car bd)))
+(alunos_repetidos alunos(car(car(car bd)))))
+(cons (car(cdr(car(car bd))))
+(cons (car(cdr(cdr(car(car bd))))) 'nil)))(cdr(car bd)))'nil)
+(cons(cons(cons (car(car(car bd)))
+(cons (append(car(cdr(car(car bd))))
+(alunos_repetidos alunos (car(cdr(car(car bd)))) ))
+(cons (car(cdr(cdr(car(car bd))))) 'nil)))(cdr(car bd)))'nil)
+)
+)
+
+(defun alunos_igual? (aluno bd)
+(if (null bd)
+T
+(if (eq aluno (car bd))
+nil
+(alunos_igual? aluno (cdr bd))
+)
+)
+)
+
+
+(defun alunos_repetidos (alunos bd)
+(if (null alunos)
+nil
+(if(alunos_igual? (car alunos) bd)
+(cons (car alunos) (alunos_repetidos (cdr alunos) bd))
+(alunos_repetidos (cdr alunos) bd)
+)
+)
+)
+
+
+(defun nova_disciplina (alunos disciplina turma)
+(if (eq turma '1)
+(cons (cons (cons (append(cons 't1 nil)alunos) (cons (cons 't2 'nil)
+(cons 'nil 'nil))) disciplina) 'nil)
+(cons (cons (cons (cons 't1 nil) (cons (append(cons 't2 'nil)alunos)
+(cons 'nil 'nil))) disciplina) 'nil)
+)
+)
+
+
+
+
+(DEFUN CANCELAR-MATRICULA (ALUNOS DISCIPLINAS TURMA BD) 
+(if(null bd)
+nil
+(if (verificar_disciplina disciplinas (cdr(car bd)))
+(append(alterar_bancoAlunos alunos turma bd)
+(CANCELAR-MATRICULA alunos disciplinas turma (cdr bd)))
+(append(cons(car bd)'nil)
+(CANCELAR-MATRICULA alunos disciplinas turma (cdr bd)))
+)
+)
+)
+
+(defun alterar_bancoAlunos (alunos turma bd)
+(if (vazio? alunos turma bd)
+nil
+(if (eq turma 1)
+(cons(cons(cons(append(cons't1 nil)
+(remover_alunos alunos (cdr(car(car(car bd))))))
+(cons (car(cdr(car(car bd))))
+(cons (car(cdr(cdr(car(car bd)))))'nil)))(cdr(car bd)))'nil)
+(cons(cons(cons (car(car(car bd)))
+(cons (append(cons 't2 'nil)
+(remover_alunos alunos (cdr(car(cdr(car(car bd)))))))
+(cons (car(cdr(cdr(car(car bd)))))'nil)))(cdr(car bd)))'nil)
+)
+)
+)
+
+
+(defun vazio? (alunos turma bd)
+(if (eq turma 1)
+(if(and(and(eq (remover_alunos alunos (cdr(car(car(car bd)))))nil)
+(eq (cdr(car(cdr(car(car bd))))) nil)) 
+(eq (car(cdr(cdr(car(car bd))))) nil))
+T
+nil)
+(if(and(and(eq (remover_alunos alunos (cdr(car(cdr(car(car bd))))))nil)
+(eq (cdr(car(car(car bd))))nil)) 
+(eq (car(cdr(cdr(car(car bd))))) nil))
+T
+nil
+)
+)
+)
+
+
+(defun remover_alunos (alunos bd)
+(if(null bd)
+nil
+(if (alunoRepetido? alunos (car bd))
+(remover_alunos alunos (cdr bd))
+(cons (car bd) (remover_alunos alunos (cdr bd))))
+)
+)
+
+(defun alunoRepetido? (alunos bd)
+(if (null alunos)
+nil
+(if (eq (car alunos) bd)
+T
+(alunoRepetido? (cdr alunos) bd)
+)
+)
+)
+
+
+
+
+(defun limpar (x lista)
+(if (null lista)
+nil
+(if (not (eq x (car lista)))
+(cons (car lista) (limpar x (cdr lista)))
+(limpar x (cdr lista)))))
+
+
+
+(defun procurarr (x lista)
+(if (null lista)
+nil
+(if (eq x (car lista))
+T
+(procurarr x (cdr lista)))))
+
+
+
+(defun eliminar (l)
+(if (null l)
+nil
+(if (procurarr (car l) (cdr l))
+(cons (car l) (eliminar (limpar (car l) l)))
+(cons (car l) (eliminar (cdr l)))))) 
+
+
+
+(defun alunos? (bd)
+(if (null bd)
+nil
+(eliminar (append (append (cdaaar bd) (cdr (cadaar bd))) 
+(alunos? (cdr bd))))))
