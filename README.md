@@ -31,7 +31,7 @@
 
 ### Desenvolvedores
 * Murilo de Paula Araujo.
-* Christoper de Oliveira Souza.
+* Christopher de Oliveira Souza.
 
 ### Contribuições
 - Contribuições e possíveis melhorias no meu ponto de vista são sempre bem-vindas.
