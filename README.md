@@ -15,7 +15,7 @@
 * Foi utilizado o Windows 10, mas pode ser realizado em outro sistema operacional, necessita instalar o compilador compatível com o sistema operacional.
 
  #### Compilador
-* Foi utilizado o software XLIPS a compilação e execução de todo o projeto.
+* Foi utilizado o software XLIPS para compilação e execução de todo o projeto.
 * <a> [XLISP: Necessário para desenvolvimento do projeto](https://almy.us/xlisp.html)
 
    * **Observação:** Para desenvolver este projeto, precisa apenas de conhecimentos básicos sobre lógica de programação e linguagem de programação Lisp.
